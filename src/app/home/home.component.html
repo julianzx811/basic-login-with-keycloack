@@ -1,0 +1,85 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        text-align: center;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 12px;
+    }
+    th {
+        background-color: #3f51b5;
+        color: white;
+        text-transform: uppercase;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(odd) {
+        background-color: #e0e0e0;
+    }
+    textarea {
+        width: 100%;
+        height: 100px;
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+    }
+    #content {
+        width: 80%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input[type="button"] {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #3f51b5;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="button"]:hover {
+        background-color: #303f9f;
+    }
+</style>
+
+<div id="home-div">
+    <div id="table-attr">
+        <table>
+            <thead>
+                <tr>
+                    <th>Attributes</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of userObject | keyvalue">
+                    <td>{{ c.key }}</td>
+                    <td>{{ c.value }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="content">
+        <textarea id="ta-token" readonly>{{ token }}</textarea>
+        <textarea id="ta-refreshToken" readonly>{{ refreshToken }}</textarea>
+        <input type="button" value="Actualizar Token" (click)="update()" />
+        <input type="button" value="Salir" (click)="logout()" />
+    </div>
+</div>
